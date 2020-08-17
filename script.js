@@ -34,4 +34,11 @@ function addTransactionDOM(transaction) {
   list.appendChild(item);
 }
 
-addTransactionDOM();
+// Init app
+function init() {
+  list.innerHTML = "";
+
+  transactions.forEach(addTransactionDOM);
+}
+
+init();
