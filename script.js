@@ -44,6 +44,7 @@ function addTransaction(e) {
 // Remove transction by ID
 function removeTransaction(id) {
   transactions = transactions.filter((transaction) => transaction.id !== id);
+  updateLocalStorage();
   init();
 }
 
