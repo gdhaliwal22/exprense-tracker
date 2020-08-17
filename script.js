@@ -19,7 +19,6 @@ let transactions = dummyTransactions;
 function addTransactionDOM(transaction) {
   // Get sign
   const sign = transaction.amount < 0 ? "-" : "+";
-
   const item = document.createElement("li");
 
   // Add class based on value
@@ -33,18 +32,21 @@ function addTransactionDOM(transaction) {
 
   list.appendChild(item);
 }
-
 // Update the balance, income, and expense
 
 function updateValues() {
   const amounts = transactions.map((transaction) => transaction.amount);
-  console.log(amounts);
-}
+  const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
+  const income = amounts
+    .filter((item) => item > 0)
+    .reduce((acc, item) => (acc += item), 0)
+    .toFixed(2);
 
+  console.log(income);
+}
 // Init app
 function init() {
   list.innerHTML = "";
-
   transactions.forEach(addTransactionDOM);
   updateValues();
 }
