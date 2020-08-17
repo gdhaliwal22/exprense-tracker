@@ -35,6 +35,12 @@ function addTransaction(e) {
   }
 }
 
+// Remove transction by ID
+function removeTransaction(id) {
+  transactions = transactions.filter((transaction) => transaction.id !== id);
+  init();
+}
+
 // Generate random ID
 function generateID() {
   return Math.floor(Math.random() * 100000000);
@@ -52,7 +58,9 @@ function addTransactionDOM(transaction) {
   item.innerHTML = `
     ${transaction.text} <span>${sign}${Math.abs(
     transaction.amount
-  )}<span> <button class="delete-btn">X</button>
+  )}<span> <button class="delete-btn" onClick="removeTransaction(${
+    transaction.id
+  })">X</button>
     `;
 
   list.appendChild(item);
